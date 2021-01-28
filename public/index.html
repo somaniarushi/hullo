@@ -32,7 +32,21 @@
     		var socket = io();
 
 			// Cause the event joining message on the reception of a name
-    		socket.emit('joining msg', name);
+			socket.emit('joining msg', name);
+			
+			// prevent scrolling from outside of input field
+			$(document).on('touchstart', function(e) {
+				if (e.target.nodeName !== 'INPUT') {
+					e.preventDefault();
+				}
+			});
+
+			// prevent scrolling from within input field
+			$(document).on('touchmove', function(e) {
+				if (e.target.nodeName == 'INPUT') {
+					e.preventDefault();
+				}
+			});
 
 			// if form is submitted, cause a chat message event 
     		$('form').submit(function(e) {
