@@ -4,7 +4,8 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon ./app.js --exec babel-node -e js"
+    "startdev": "nodemon ./app.js --exec babel-node -e js",
+    "start": "node ./app.js --exec babel-node -e js"
   },
   "repository": {
     "type": "git",
