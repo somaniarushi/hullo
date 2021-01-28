@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>ChatRoom</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel = "stylesheet" href="style.css">
+	<link href="https://fonts.googleapis.com/css2?family=Saira:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+	<!-- Pre-running a name for the user-->
+	<script>
+		var name = prompt("Please enter your name:");
+	</script>
+</head>
+<body>
+    
+    <div id="intro">
+      <h1>H U L L O</h1>
+    </div>
+	
+	<!-- Where messages will be included -->
+    <ul id="messages"></ul>
+    
+    <form action="">
+	  <input id="m" placeholder="Enter your message..." autocomplete="off" required />
+	  <button>Send</button>
+    </form>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script>
+		
+    		var socket = io();
+
+			// Cause the event joining message on the reception of a name
+    		socket.emit('joining msg', name);
+
+			// if form is submitted, cause a chat message event 
+    		$('form').submit(function(e) {
+				// will prevent page reloading
+				e.preventDefault();            
+				
+				// sending the name of the writer with the value of the form
+				socket.emit('chat message', (name + ':  ' + $('#m').val()));
+				  
+				// add a list item with what you say
+                $('#messages').append($('<li id="list">').text('You:  ' + $('#m').val()));
+
+				// blank out the send message bar to have another message come in
+				  $('#m').val('');
+				  
+				// have to return a boolean value
+      			return false;
+			});
+			
+			// if a chat message event happens ("comes in")
+			// take that message and add it to the displayed messages
+    		socket.on('chat message', function(msg){
+      			$('#messages').append($('<li>').text(msg));
+    		});
+  		
+    </script>
+</body>
+</html>

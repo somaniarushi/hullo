@@ -1,35 +1,43 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const socket = require('socket.io');
+var express = require('express');
+var http = require('http');
 
-const app = express();
-app.use(bodyParser.urlencoded({extended: false}));
-app.use(express.static('public'));
-app.set('view engine', 'ejs');
-var port = process.env.PORT || 3000;
+var app = express();
+var server = http.createServer(app);
 
-//Render Index page
+var io = require('socket.io')(server);
+var path = require('path');
+
+
+app.use(express.static(path.join(__dirname,'./public')));
+
 app.get('/', (req, res) => {
-    res.render('index')
-})
-
-//Start Server
-const server = app.listen(port, () => {
-    console.log(`Server Running on port ${port}`)
-})
+  res.sendFile(__dirname + '/public/index.html');
+});
 
 
-//Get username and roomname from form and pass it to room
-app.post('/room', (req, res) => {
-    roomname = req.body.roomname;
-    username = req.body.username;
-    res.redirect(`/room?username=${username}&roomname=${roomname}`)
-})
+var name;
 
-//Rooms
-app.get('/room', (req, res)=>{
-    res.render('room')
-})
+io.on('connection', (socket) => {
+  console.log('new user connected');
+  
+  socket.on('joining msg', (username) => {
+  	name = username;
+  	io.emit('chat message', `---${name} joined the chat---`);
+  });
+  
+  socket.on('disconnect', () => {
+    console.log('user disconnected');
+    io.emit('chat message', `---${name} left the chat---`);
+    
+  });
+  socket.on('chat message', (msg) => {
+    socket.broadcast.emit('chat message', msg);         
+    //sending message to all except the sender
+  });
+});
 
-const io = socket(server);
-require('./utils/socket')(io);
+server.listen(3000, () => {
+  console.log('Server listening on :3000');
+});
+
+
