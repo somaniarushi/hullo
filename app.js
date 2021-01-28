@@ -1,6 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const socket = require('socket.io')
+const socket = require('socket.io');
 
 const app = express();
 app.use(bodyParser.urlencoded({extended: false}));
@@ -30,3 +30,6 @@ app.post('/room', (req, res) => {
 app.get('/room', (req, res)=>{
     res.render('room')
 })
+
+const io = socket(server);
+require('./utils/socket')(io);
