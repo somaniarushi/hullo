@@ -26,7 +26,7 @@ form {
  }
  
  form input { 
-	background-color: #e6f7ff;
+	background-color: #b3e1ff;
 	border: 1px solid rgba(0, 126, 189, 0.205);
 	/* border: none; */
 	border-radius: 6px;
@@ -34,6 +34,11 @@ form {
 	width: 90%; 
 	 margin-right: 0.5%; 
 	box-shadow: 0 5px 5px -6px #777;
+ }
+
+ form input::placeholder {
+	 font-family: 'Saira', sans-serif;
+	 color: #111;
  }
  
  form button { 
@@ -54,13 +59,28 @@ form {
  }
  
  #messages li { 
- 	padding: 5px 10px; 
+	 padding: 5px 10px; 
+	 margin-bottom: 2px;
+	 margin-right: 20%;
+	 margin-left: 20%;
+ }
+
+ @media screen and (max-width: 600px) {
+	#messages li { 
+		margin-right: 0;
+		margin-left: 0;
+	}
  }
  
  #messages li:nth-child(odd) { 
 	 background: #b3e1ff; 
 	 border-radius: 4px;
  }
+
+ #messages li:nth-child(even) { 
+	background: #e3f7fa; 
+	border-radius: 4px;
+}
 
 
 #list{
