@@ -75,8 +75,14 @@ form {
 	 padding: 0; 
 	 min-height: 73vh;
 	 max-height: 73vh;
-	 overflow: scroll;
- 	
+	 overflow: scroll;	
+ }
+
+ @media screen and (max-width: 600px) {
+	 #messages {
+		min-height: 50vh;
+		max-height: 50vh;
+	 }
  }
  
  #messages li { 
