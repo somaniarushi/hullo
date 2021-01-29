@@ -30,6 +30,8 @@ body {
 	justify-content: center;
 	/* background:  -webkit-linear-gradient(bottom,  #818181, #cfcfcf); */
 	background: #cfcfcf;
+	margin-right: 20%;
+	margin-left: 20%;
 	box-shadow: 3px 5px 0px #111;
 	border-radius: 6px;
 	margin-bottom: 10px;
@@ -83,17 +85,16 @@ form {
 	list-style-type: none;
  	margin: 0; 
 	 padding: 0; 
-	 min-height: 73vh;
-	 max-height: 73vh;
+	 height: 73vh;
+	 
 	 overflow: scroll;	
  }
 
- /* @media screen and (max-width: 600px) {
-	 #messages {
-		/* min-height: 0vh; */
-		/* max-height: 50vh; */
-	 /* }
- } */
+ @media screen and (max-width: 600px) {
+	 form input {
+		bottom: 40px;
+	 }
+ }
  
  #messages li { 
 	 padding: 5px 10px; 
