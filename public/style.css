@@ -78,12 +78,12 @@ form {
 	 overflow: scroll;	
  }
 
- @media screen and (max-width: 600px) {
+ /* @media screen and (max-width: 600px) {
 	 #messages {
-		min-height: 0vh;
+		/* min-height: 0vh; */
 		/* max-height: 50vh; */
 	 }
- }
+ } */
  
  #messages li { 
 	 padding: 5px 10px; 
