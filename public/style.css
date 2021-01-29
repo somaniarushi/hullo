@@ -80,8 +80,8 @@ form {
 
  @media screen and (max-width: 600px) {
 	 #messages {
-		min-height: 50vh;
-		max-height: 50vh;
+		min-height: 0vh;
+		/* max-height: 50vh; */
 	 }
  }
  
