@@ -8,40 +8,58 @@ body {
 	font-family: 'Saira', sans-serif;
 	font-size: 15px;
 	padding: 20px;
+	background: #f1f1f1;
+	/* background: red; */
+	/* background: -webkit-gradient(linear, left top, right top, color-stop(0%, transparent), color-stop(50%,#fff), color-stop(100%,transparent)); Chrome, Safari4+ */
 }
  
  
 #intro {
-	color: #00aaff;
+	color: #000;
 	font-size: 20px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	/* background:  -webkit-linear-gradient(bottom,  #818181, #cfcfcf); */
+	background: #cfcfcf;
+	box-shadow: 3px 5px 0px #111;
+	border-radius: 6px;
+	margin-bottom: 10px;
 	 /* height: 10%;	 */
  } 
  
 form { 
  	/* background: #000000;  */
  	/* padding: 3px;  */
- 	position: fixed; 
- 	bottom: 15px; 
+	 position: fixed; 
+	 display: flex;
+	 justify-content:first baseline;
+ 	/* bottom: 35px;  */
 	 width: 100%; 
  }
  
  form input { 
-	background-color: #b3e1ff;
-	border: 1px solid rgba(0, 126, 189, 0.205);
-	/* border: none; */
+	background-color: #cfcfcf;
+	/* border: 1px solid rgba(0, 0, 0, 0.205); */
+	border: none;
 	border-radius: 6px;
- 	padding: 10px; 
+	 padding: 10px; 
+	 margin-top: 40px;
 	width: 90%; 
-	 margin-right: 0.5%; 
-	box-shadow: 0 5px 5px -6px #777;
+	 /* margin-right: 0.5%;  */
+	box-shadow: 4px 5px 0px 2px #111;
  }
 
  form input::placeholder {
 	 font-family: 'Saira', sans-serif;
 	 color: #111;
  }
+
+ form input:focus{
+	 outline: none;
+ }
  
- form button { 
+ /* form button { 
  	width: 5%; 
  	background: #00aaff;
  	border: 1px solid #0099e6; 
@@ -49,12 +67,15 @@ form {
 	border-radius: 6px;
 	color: #fff;
  	font-size: 1rem; 
- }
+ } */
  
  #messages { 
 	list-style-type: none;
  	margin: 0; 
- 	padding: 0; 
+	 padding: 0; 
+	 min-height: 73vh;
+	 max-height: 73vh;
+	 overflow: scroll;
  	
  }
  
@@ -73,12 +94,13 @@ form {
  }
  
  #messages li:nth-child(odd) { 
-	 background: #b3e1ff; 
+	 background: #d6d6d6; 
 	 border-radius: 4px;
  }
 
  #messages li:nth-child(even) { 
-	background: #e3f7fa; 
+	background: #353535; 
+	color: #fff;
 	border-radius: 4px;
 }
 
@@ -86,3 +108,7 @@ form {
 #list{
 	text-align: right;
 }
+
+/* body {
+	background-color: linear-gradient(to top, #245edb 0%, #0c8dea 100%);
+} */
