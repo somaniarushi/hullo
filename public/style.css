@@ -48,6 +48,8 @@ form {
 	width: 90%; 
 	 /* margin-right: 0.5%;  */
 	box-shadow: 4px 5px 0px 2px #111;
+	-webkit-box-shadow: 4px 5px 0px 2px #111;  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+	-moz-box-shadow:    4px 5px 0px 2px #111;  /* Firefox 3.5 - 3.6 */
  }
 
  form input::placeholder {
